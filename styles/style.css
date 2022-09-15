@@ -1,0 +1,85 @@
+* {
+  margin: 0;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  width: 50%;
+  height: 80%;
+  margin: 0 auto;
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  gap: 10px;
+  transform: translate(50%, -50%);
+  border: 1px solid rgb(169, 166, 186);
+}
+
+.notes-container,
+.summary-container {
+  display: flex;
+  position: relative;
+  flex: 1;
+  flex-direction: column;
+  width: 100%;
+}
+.notes-title {
+  display: grid;
+  color: white;
+  grid-template-columns: 1fr 2fr 2fr 2fr 2fr 2fr 1fr 0.5fr 0.5fr;
+  align-items: center;
+  width: 100%;
+  height: 5vh;
+  background-color: grey;
+  margin-bottom: 5px;
+}
+
+.notes-info {
+  display: grid;
+  color: grey;
+  grid-template-columns: 1fr 2fr 2fr 2fr 2fr 2fr 1fr 0.5fr 0.5fr;
+  align-items: center;
+  width: 100%;
+  height: 5vh;
+  margin-bottom: 5px;
+  background-color: rgb(229, 235, 242);
+}
+
+.notes-info-hover:hover {
+cursor:pointer;
+}
+
+.summary-title {
+  display: grid;
+  color: white;
+  grid-template-columns: 10% 3fr 2fr 3fr;
+  align-items: center;
+  width: 100%;
+  height: 5vh;
+  background-color: grey;
+}
+.notes-info-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.rounded-button {
+  background: grey;
+  width: 2vw;
+  height: 4vh;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+.create-note-button {
+  width: 10%;
+  position: absolute;
+  right: 0;
+  bottom: 40px;
+}
