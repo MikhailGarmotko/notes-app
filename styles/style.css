@@ -61,7 +61,7 @@ cursor:pointer;
   height: 5vh;
   background-color: grey;
 }
-.notes-info-container {
+.notes-info-container, .summary-info-container {
   display: flex;
   flex-direction: column;
   width: 100%;
