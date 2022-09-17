@@ -22,7 +22,9 @@
           <ion-icon name="trash-outline"></ion-icon>
         </div>
         <div class="notes-info-container"></div>
-        <button id ="create" class="create-note-button">Create note</button>
+        <div class="create-note-button-container">
+          <button id="create" class="create-note-button">Create note</button>
+        </div>
       </div>
       <div class="summary-container">
         <div class="summary-title">
@@ -35,6 +37,51 @@
         <div class="summary-info-container"></div>
       </div>
     </div>
+    <div class="new-note-form">
+      <form class="form">
+        <h1 class="form-title">Create note</h1>
+        <label class="form-label" for="categotry">Choose category</label>
+        <select class="form-input" id="category">
+          <option value="Task">Task</option>
+          <option value="Idea">Idea</option>
+          <option value="Random Thought">Random Thought</option>
+        </select>
+        <label class="form-label" for="name">Input name</label>
+        <input
+          class="form-input"
+          id="name"
+          placeholder="Input name..."
+          
+        />
+        <label class="form-label" for="content">Input content</label>
+        <textarea
+          class="form-textarea"
+          id="content"
+          placeholder="..."
+          
+        ></textarea>
+        <button type="submit" id="submit" class="form-button">Add note</button>
+        <button type="submit" id="cancel" class="form-button">Cancel</button>
+      </form>
+    </div>
+    <div class="edit-note-form">
+      <form class="form">
+        <h1 class="form-title">Edit note</h1>
+        <label class="form-label" for="edit-note-name">Name</label>
+        <input id="edit-note-name" />
+         <label class="form-label" for="edit-note-category">Category</label>
+        <select class="form-input" id="edit-note-category">
+          <option value="Task">Task</option>
+          <option value="Idea">Idea</option>
+          <option value="Random Thought">Random Thought</option>
+        </select>
+        <label class="form-label" for="edit-note-content">Content</label>
+        <input id="edit-note-content" />
+        <button type="submit" id="submit" class="form-button">Edit note</button>
+        <button type="submit" id="cancel" class="form-button">Cancel</button>
+      </form>
+    </div>
+
     <script type="module" src="index.js"></script>
     <script
       type="module"

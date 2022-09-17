@@ -1,20 +1,10 @@
-export const notes = [
+import { images } from "./images.js";
+
+export let notes = [
   {
-    picture: '<ion-icon name="cart-outline"></ion-icon>',
-    name: "Shopping list",
-    createdAt: "1618989928",
-    category: "Task",
-    content: "Tomatoes,bread",
-    dates: "",
-    edit: '<ion-icon name="pencil-outline"></ion-icon>',
-    archive: '<ion-icon name="archive-outline"></ion-icon>',
-    delete: '<ion-icon name="trash-outline"></ion-icon>',
-    id: "",
-  },
-  {
-    picture: '<ion-icon name="cart-outline"></ion-icon>',
-    name: "New Feature",
-    createdAt: "1619508328",
+    picture: images["Idea"],
+    name: "Good Feature",
+    createdAt: "1663408982336",
     category: "Idea",
     content: "Implement new feature",
     dates: "",
@@ -23,9 +13,9 @@ export const notes = [
     delete: '<ion-icon name="trash-outline"></ion-icon>',
   },
   {
-    picture: '<ion-icon name="cart-outline"></ion-icon>',
+    picture: images["Task"],
     name: "Shopping list",
-    createdAt: "1618989928",
+    createdAt: "1663808982337",
     category: "Task",
     content: "Tomatoes,bread",
     dates: "",
@@ -34,9 +24,20 @@ export const notes = [
     delete: '<ion-icon name="trash-outline"></ion-icon>',
   },
   {
-    picture: '<ion-icon name="cart-outline"></ion-icon>',
+    picture: images["Random Thought"],
     name: "New Feature",
-    createdAt: "1619508328",
+    createdAt: "1663488982336",
+    category: "Random thought",
+    content: "Implement new feature",
+    dates: "",
+    edit: '<ion-icon name="pencil-outline"></ion-icon>',
+    archive: '<ion-icon name="archive-outline"></ion-icon>',
+    delete: '<ion-icon name="trash-outline"></ion-icon>',
+  },
+  {
+    picture: images["Idea"],
+    name: "Old Feature",
+    createdAt: "1863408962336",
     category: "Idea",
     content: "Implement new feature",
     dates: "",
