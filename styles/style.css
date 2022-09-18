@@ -55,12 +55,24 @@
 .summary-title {
   display: grid;
   color: white;
-  grid-template-columns: 1fr 3fr 2fr 3fr;
+  grid-template-columns: 1fr 3fr 2fr 3fr 2fr;
   align-items: center;
   width: 100%;
   height: 5vh;
   background-color: grey;
 }
+.summary-info {
+  display: grid;
+  color: white;
+  grid-template-columns: 1fr 3fr 2fr 3fr 2fr;
+  align-items: center;
+  width: 100%;
+  height: 5vh;
+  margin-bottom: 5px;
+  background-color: rgb(229, 235, 242);
+}
+
+
 .notes-info-container,
 .summary-info-container {
   display: flex;
@@ -80,7 +92,7 @@
   justify-content: center;
   align-items: center;
   border-radius: 50%;
-
+  margin:5px;
 }
 
 .create-note-button-container {
@@ -96,7 +108,7 @@
   cursor:pointer;
 }
 
-.new-note-form, .edit-note-form {
+.new-note-form, .edit-note-form, .unarchived-form {
   position: absolute;
   flex-direction: column;
   justify-content: center;
@@ -148,4 +160,35 @@
   padding: 10px;
 }
 
+.unarchived {
+outline:none;
+border:1px solid rgb(215, 215, 227); 
+background-color: rgb(176, 180, 213);
+margin:5px;
+color:white;
+}
 
+.unarchived-disabled {
+  background-color: inherit;
+  outline:none;
+}
+.unarchived:hover{
+  background-color: rgb(116, 116, 210);;
+}
+
+.archives-container {
+  display:flex; 
+  flex-direction: column;
+  width:100%;
+  height: 50%;
+  overflow: auto;
+}
+
+.archives-container-element {
+  color:white;
+  display: flex;
+  padding:5px;
+  justify-content: space-between;
+  background-color: rgb(181, 203, 222);
+  margin-bottom:2px;
+}
