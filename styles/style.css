@@ -72,7 +72,6 @@
   background-color: rgb(229, 235, 242);
 }
 
-
 .notes-info-container,
 .summary-info-container {
   display: flex;
@@ -80,7 +79,6 @@
   width: 100%;
   height: 40vh;
   overflow: auto;
-  
 }
 
 .rounded-button {
@@ -92,7 +90,7 @@
   justify-content: center;
   align-items: center;
   border-radius: 50%;
-  margin:5px;
+  margin: 5px;
 }
 
 .create-note-button-container {
@@ -100,15 +98,17 @@
   justify-content: right;
 }
 .create-note-button {
-  margin:5px;
+  margin: 5px;
   width: fit-content;
   justify-content: right;
 }
 .create-note-button:hover {
-  cursor:pointer;
+  cursor: pointer;
 }
 
-.new-note-form, .edit-note-form, .unarchived-form {
+.new-note-form,
+.edit-note-form,
+.unarchived-form {
   position: absolute;
   flex-direction: column;
   justify-content: center;
@@ -160,35 +160,50 @@
   padding: 10px;
 }
 
-.unarchived {
-outline:none;
-border:1px solid rgb(215, 215, 227); 
-background-color: rgb(176, 180, 213);
-margin:5px;
-color:white;
+.form-button-disabled {
+  border: 2px solid grey;
+  background-color: whitesmoke;
+  color: rgb(215, 196, 196);
+  font-size: larger;
+  padding: 10px;
+  border: none;
 }
 
-.unarchived-disabled {
-  background-color: inherit;
-  outline:none;
+.form-button:hover {
+  background-color: rgb(94, 94, 144);
 }
-.unarchived:hover{
-  background-color: rgb(116, 116, 210);;
+
+.unarchived {
+  outline: none;
+  border: 1px solid rgb(215, 215, 227);
+  background-color: rgb(176, 180, 213);
+  margin: 5px;
+  color: white;
+}
+
+.disabled-button {
+  background-color: inherit;
+  color: inherit;
+  outline: none;
+  border: 1px solid lightgray;
+}
+.unarchived:hover {
+  background-color: rgb(116, 116, 210);
 }
 
 .archives-container {
-  display:flex; 
+  display: flex;
   flex-direction: column;
-  width:100%;
+  width: 100%;
   height: 50%;
   overflow: auto;
 }
 
 .archives-container-element {
-  color:white;
+  color: white;
   display: flex;
-  padding:5px;
+  padding: 5px;
   justify-content: space-between;
   background-color: rgb(181, 203, 222);
-  margin-bottom:2px;
+  margin-bottom: 2px;
 }

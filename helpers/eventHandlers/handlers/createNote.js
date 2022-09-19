@@ -1,8 +1,8 @@
-import { clearElement } from "../../components/clearElement.js";
 import { createNoteDiv } from "../../components/createNoteDiv.js";
 import { notes } from "../../../data/data.js";
 import { images } from "../../../data/images.js";
 import { createSummaryDiv } from "../../components/createSummaryDiv.js";
+import { checkDataPresence } from "../../misc/checkDataPresense.js";
 
 const newNoteForm = document.querySelector(".new-note-form");
 const newNoteFormButton = newNoteForm.querySelector(".form-button");
@@ -19,6 +19,7 @@ const onCreateSubmitHandler = (e) => {
     const name = targetElem.children["name"].value;
     const category = targetElem.children["category"].value;
     const content = targetElem.children["content"].value;
+    const contentHasDates = checkDataPresence(content);
 
     const adds = {
       picture: images[`${category}`],
@@ -26,7 +27,7 @@ const onCreateSubmitHandler = (e) => {
       createdAt: Date.now(),
       category: category,
       content: content,
-      dates: "",
+      dates: contentHasDates ? contentHasDates.join() : "",
       edit: '<ion-icon name="pencil-outline"></ion-icon>',
       archive: '<ion-icon name="archive-outline"></ion-icon>',
       delete: '<ion-icon name="trash-outline"></ion-icon>',

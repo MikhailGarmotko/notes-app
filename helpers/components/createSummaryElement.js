@@ -15,7 +15,7 @@ export const createSummaryElement = (type, inner, key) => {
 
     inner
       ? (button.classList.add("unarchived"), (button.disabled = false))
-      : (button.classList.add("unarchived-disabled"), (button.disabled = true));
+      : (button.classList.add("disabled-button"), (button.disabled = true));
 
     button.innerHTML = "Unarchived";
     button.id = "unarchived";

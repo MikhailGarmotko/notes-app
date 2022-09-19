@@ -5,5 +5,5 @@ export const events = {
   archive: eventHandler.archiveNote,
   delete: eventHandler.deleteNote,
   create: eventHandler.createNote,
-  unarchived:eventHandler.unarchiveNote,
+  unarchived: eventHandler.unarchiveNote,
 };

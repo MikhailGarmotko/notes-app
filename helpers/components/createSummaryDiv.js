@@ -8,7 +8,15 @@ const createSummaryFromNotes = (notes) => {
   notesMap.forEach((i) => {
     let activeCount = 0;
     let archivedCount = 0;
-    notes.map((item) => (item.category === i ? item.status === "active"?activeCount++:archivedCount++ : null), 0);
+    notes.map(
+      (item) =>
+        item.category === i
+          ? item.status === "active"
+            ? activeCount++
+            : archivedCount++
+          : null,
+      0
+    );
     summary.push({
       picture: images[`${i}`],
       category: i,
@@ -16,9 +24,8 @@ const createSummaryFromNotes = (notes) => {
       archivedCount: archivedCount,
       button: archivedCount,
     });
-  }
-  );
- 
+  });
+
   return summary;
 };
 

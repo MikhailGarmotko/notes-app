@@ -1,9 +1,8 @@
 import { createNoteDiv } from "../../components/createNoteDiv.js";
-import { clearElement } from "../../components/clearElement.js";
 import { notes } from "../../../data/data.js";
 import { images } from "../../../data/images.js";
 import { createSummaryDiv } from "../../components/createSummaryDiv.js";
-
+import { checkDataPresence } from "../../misc/checkDataPresense.js";
 
 const editNoteForm = document.querySelector(".edit-note-form");
 const editNoteName = editNoteForm.querySelector("#edit-note-name");
@@ -17,20 +16,17 @@ const editNoteSubmitHandler = (e) => {
     editNoteForm.style.display = "none";
     return;
   }
-  // const name = e.currentTarget.children[0].children["edit-note-name"].value;
+
   const name = editNoteName.value;
   const category = editNoteCategory.value;
   const content = editNoteContent.value;
-//   const category =
-//     e.currentTarget.children[0].children["edit-note-category"].value;
-//   const content =
-//     e.currentTarget.children[0].children["edit-note-content"].value;
-
+  const contentHasDates = checkDataPresence(content);
   notes.filter((i) =>
     i.createdAt == id
       ? ((i.name = name),
         (i.category = category),
         (i.content = content),
+        (i.dates = contentHasDates ? contentHasDates.join() : ""),
         (i.picture = images[`${category}`]))
       : null
   );
@@ -40,15 +36,12 @@ const editNoteSubmitHandler = (e) => {
   editNoteForm.style.display = "none";
 };
 
-
-
 export const editNote = (e) => {
   id = e.currentTarget.parentElement.children[2].id;
-  editNoteName.value = e.currentTarget.parentElement.children["name"].innerText;
-  editNoteCategory.value = e.currentTarget.parentElement.children["category"].innerText;
-
-  const { content } = notes.find((i) => i.createdAt == id);
+  const { name, content, category } = notes.find((i) => i.createdAt == id);
+  editNoteName.value = name;
   editNoteContent.value = content;
+  editNoteCategory.value = category;
   editNoteForm.style.display = "flex";
   editNoteForm.addEventListener("submit", editNoteSubmitHandler);
 };
