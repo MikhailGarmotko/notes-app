@@ -1,15 +1,9 @@
+import { createNoteDiv } from "./helpers/components/createNoteDiv.js";
 import { notes } from "./data/data.js";
-import { createNoteElement } from "./helpers/createNoteElement.js";
-
-const notesInfoBlock = document.getElementsByClassName("notes-info-container");
-
-notes.map((i) => {
-  const noteDiv = document.createElement("div");
-  noteDiv.classList.add("notes-info");
-  noteDiv.id = Date.now();
-  for (let key in i) {
-    noteDiv.append(createNoteElement("div", i[key], key));
-  }
-
-  notesInfoBlock[0].append(noteDiv);
-});
+import { createSummaryDiv } from "./helpers/components/createSummaryDiv.js";
+try {
+  createNoteDiv(notes);
+  createSummaryDiv(notes);
+} catch (error) {
+  alert(error);
+}
