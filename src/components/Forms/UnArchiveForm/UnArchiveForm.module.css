@@ -50,3 +50,12 @@
   padding: 10px;
   width:100%;
 }
+
+.archives-container-element {
+  color: white;
+  display: flex;
+  padding: 5px;
+  justify-content: space-between;
+  background-color: rgb(181, 203, 222);
+  margin-bottom: 2px;
+}

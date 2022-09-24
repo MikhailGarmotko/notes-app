@@ -1,11 +1,10 @@
 import styles from "./UnArchiveForm.module.css";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import { Archives } from "./Archives/Archives";
 import { useDispatch, useSelector } from "react-redux";
-import { getArchiveNotes } from "../../../redux/reducers/notesreducer";
-import { useEffect } from 'react';
-import { Notes,Note } from "../../../data/interfaces";
 import { RootState } from "../../../redux/store";
+import { useState } from 'react';
+import { unarchiveNote } from "../../../redux/reducers/notesreducer";
+import { ArchiveType } from "../../../data/interfaces";
 
 export const UnArchiveForm: React.FC = (): JSX.Element => {
   
@@ -14,16 +13,37 @@ export const UnArchiveForm: React.FC = (): JSX.Element => {
   let archivedNotes = useSelector((state: RootState) => state.archive);
   let archivedNotesByCategory = archivedNotes.filter(i => i.category === category)
   
-  const onSubmitFormHandler = () => { 
-    
-  }
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  
+  const [responseBody, setResponseBody] = useState({});
+  const inputChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const id = event.target.id;
+    setResponseBody({ ...responseBody, [id]:id });
+  };
+  const onSubmitFormHandler = (e: React.BaseSyntheticEvent<any>) => {
+    e.preventDefault();
+    dispatch(unarchiveNote(responseBody));
+    navigate("/");
+  };
+
 
   return (
     <div className={styles["unarchived-form"]}>
       <form className={styles["form"]} onSubmit={onSubmitFormHandler}>
         <h1>Archived notes</h1>
         <div className={styles["archives-container"]}>
-          {archivedNotesByCategory.map(archiveElement => <Archives {...archiveElement} />)}
+          {archivedNotesByCategory.map((archiveElement) => (
+            <div className={styles["archives-container-element"]}>
+              <label htmlFor={archiveElement.createdAt}>{archiveElement.name}</label>
+              <input
+                id={archiveElement.createdAt}
+                value={archiveElement.name}
+                type="checkbox"
+                onChange={(e) => inputChangeHandler(e)}
+              ></input>
+            </div>
+          ))}
         </div>
         <button
           type="submit"

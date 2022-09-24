@@ -51,7 +51,15 @@ export const NotesSlice = createSlice({
         i.createdAt == elementId ? (i.status = "archived") : null
       );
     },
-    unarchiveNote: (state, action: PayloadAction<any>) => {},
+    unarchiveNote: (state, action: PayloadAction<any>) => {
+      const elementIds = action.payload;
+      for (let key in elementIds) {
+        state.find((i: Note) =>
+          i.createdAt == key ? (i.status = "active") : null
+        );
+      }
+      return state;
+    },
     getArchiveNotes: (state, action: PayloadAction<any>): any => {
       const archivedCategory = action.payload;
       const archivedNotes: Notes = state.filter(
@@ -64,7 +72,13 @@ export const NotesSlice = createSlice({
 });
 
 
-export const { createNewNote, editNote, deleteNote, archiveNote, getArchiveNotes } =
-  NotesSlice.actions;
+export const {
+  createNewNote,
+  editNote,
+  deleteNote,
+  archiveNote,
+  getArchiveNotes,
+  unarchiveNote,
+} = NotesSlice.actions;
 
 export default NotesSlice.reducer;
