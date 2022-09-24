@@ -1,26 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import styles from "./App.module.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Form } from "./components/Forms/NoteForm/NoteForm";
+import { MainContainer } from "./components/MainContainer";
+import { UnArchiveForm } from "./components/Forms/UnArchiveForm/UnArchiveForm";
 
-function App() {
+export const App = (): JSX.Element => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <BrowserRouter>
+        <div className={styles["main-container"]}>
+          <Routes>
+            <Route path="/" element={<MainContainer />} />
+            <Route path="/note-form" element={<Form />} />
+            <Route path="/unarchive" element={<UnArchiveForm />} />
+          </Routes>
+        </div>
+      </BrowserRouter>
+    </>
   );
-}
-
-export default App;
+};

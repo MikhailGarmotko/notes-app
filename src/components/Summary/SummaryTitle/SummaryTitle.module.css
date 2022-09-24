@@ -1,0 +1,9 @@
+.summary-title {
+  display: grid;
+  color: white;
+  grid-template-columns: 1fr 3fr 2fr 3fr 2fr;
+  align-items: center;
+  width: 100%;
+  height: 5vh;
+  background-color: grey;
+}

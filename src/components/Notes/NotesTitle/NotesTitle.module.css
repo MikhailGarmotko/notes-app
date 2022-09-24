@@ -1,0 +1,10 @@
+.notes-title {
+  display: grid;
+  color: white;
+  grid-template-columns: 1fr 2fr 3fr 2fr 2fr 2fr 0.5fr 0.5fr 0.5fr;
+  align-items: center;
+  width: 100%;
+  height: 5vh;
+  background-color: grey;
+  margin-bottom: 5px;
+}

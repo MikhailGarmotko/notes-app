@@ -1,0 +1,20 @@
+.notes-container{
+  display: flex;
+  position: relative;
+  flex: 1;
+  flex-direction: column;
+  width: 100%;
+}
+.create-note-button-container {
+  display: flex;
+  justify-content: right;
+  text-decoration: none;
+}
+.create-note-button {
+  margin: 5px;
+  width: fit-content;
+  justify-content: right;
+}
+.create-note-button:hover {
+  cursor: pointer;
+}
