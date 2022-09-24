@@ -28,12 +28,12 @@ export const NoteElement = (props: Note): JSX.Element => {
   const elementId = createdAt;
   const date = new Date(parseInt(createdAt)).toLocaleDateString("en-US");
   const contentHasDates = checkDataPresence(content);
-
+  const Img = props.picture;
   return (
     <>
       {status === "active" && (
         <div id={elementId} className={styles["notes-info"]}>
-          <BulbOutline color={"grey"} />
+          <Img color={"grey"} />
           <div>{name}</div>
           <div>{date}</div>
           <div>{category}</div>

@@ -6,5 +6,5 @@ import React, { ReactElement, ReactHTML } from "react";
 export const images = {
   "Task": CartOutline,
   "Idea": BulbOutline,
-  "Random":GitBranchOutline,
+  "Random Thought":GitBranchOutline,
 };

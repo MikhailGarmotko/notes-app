@@ -17,7 +17,7 @@ export interface Summary {
 }
 
 export interface Note {
-  picture: string;
+  picture: any;
   name: string;
   createdAt: string;
   category: string;

@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { notes } from "../../data/data";
 import { checkDataPresence } from "../../helper/checkDataPresense";
 import { Note, Notes } from "../../data/interfaces";
+import { images } from "../../data/images";
 
 const initialState = notes;
 export const NotesSlice = createSlice({
@@ -10,7 +11,7 @@ export const NotesSlice = createSlice({
   reducers: {
     createNewNote: (state, action: PayloadAction<any>) => {
       const { name, category, content } = action.payload;
-      const picture = "";
+      const picture = images[category as keyof typeof images];
       const createdAt = Date.now().toString();
       const status = "active";
       const dates = "";
@@ -30,7 +31,7 @@ export const NotesSlice = createSlice({
             ? ((i.name = name),
               (i.category = category),
               (i.content = content),
-              (i.picture = ""),
+              (i.picture = images[category as keyof typeof images]),
               (i.dates = contentHasDates ? contentHasDates.join() : ""),
               (i.status = "active"))
             : null

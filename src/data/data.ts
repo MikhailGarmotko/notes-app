@@ -1,18 +1,11 @@
-// import { images } from "./images";
+import { images } from "./images";
 import { category } from "./category";
 import { Notes } from "../data/interfaces";
-import { PencilOutline } from "react-ionicons";
-import React, { ReactComponentElement } from 'react';
-import { CartOutline, BulbOutline, GitBranchOutline } from "react-ionicons";
-import { TypeAliasDeclaration } from "typescript";
-
-
-
 
 
 export let notes: Notes | [] = [
   {
-    picture: `Idea`,
+    picture: images[`Idea`],
     name: "Good Idea",
     createdAt: " 1662026665000",
     category: category["Idea"],
@@ -21,7 +14,7 @@ export let notes: Notes | [] = [
     status: "active",
   },
   {
-    picture: "Task",
+    picture: images["Task"],
     name: "Shopping list",
     createdAt: "1662113065000",
     category: category["Task"],
@@ -30,7 +23,7 @@ export let notes: Notes | [] = [
     status: "active",
   },
   {
-    picture: "Random Thought",
+    picture: images["Random Thought"],
     name: "New Feature",
     createdAt: "1662199465000",
     category: category["Random Thought"],
@@ -39,7 +32,7 @@ export let notes: Notes | [] = [
     status: "active",
   },
   {
-    picture: "Idea",
+    picture: images[`Idea`],
     name: "Touch the sky",
     createdAt: "1663063465000",
     category: category["Idea"],
@@ -48,7 +41,7 @@ export let notes: Notes | [] = [
     status: "active",
   },
   {
-    picture: "Idea",
+    picture: images[`Idea`],
     name: "Good feature",
     createdAt: "1663236265000",
     category: category["Idea"],
@@ -57,7 +50,7 @@ export let notes: Notes | [] = [
     status: "active",
   },
   {
-    picture: "Task",
+    picture: images["Task"],
     name: "Scramble eggs",
     createdAt: "1663409065000",
     category: category["Task"],
@@ -66,7 +59,7 @@ export let notes: Notes | [] = [
     status: "active",
   },
   {
-    picture: "Task",
+    picture: images["Task"],
     name: "Save the world",
     createdAt: "1663495465000",
     category: category["Task"],

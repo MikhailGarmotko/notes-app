@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Note } from "../../data/interfaces";
 import { RootState } from "../store";
 import {Summary, Summaries} from "../../data/interfaces"
-
+import { images } from "../../data/images"
 
 
 let initialState: Summaries | [] = [];
@@ -28,7 +28,7 @@ export const SummarySlice = createSlice({
           0
         );
         summaryData.push({
-          picture: "",
+          picture: images[i as keyof typeof images],
           category: i,
           active: activeCount,
           archivedCount: archivedCount,
