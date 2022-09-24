@@ -2,31 +2,41 @@ import styles from "./UnArchiveForm.module.css";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../redux/store";
-import { useState } from 'react';
+import { useState } from "react";
 import { unarchiveNote } from "../../../redux/reducers/notesreducer";
-import { ArchiveType } from "../../../data/interfaces";
 
 export const UnArchiveForm: React.FC = (): JSX.Element => {
-  
   const location = useLocation();
   const { category } = location.state;
   let archivedNotes = useSelector((state: RootState) => state.archive);
-  let archivedNotesByCategory = archivedNotes.filter(i => i.category === category)
-  
+  let archivedNotesByCategory = archivedNotes.filter(
+    (i) => i.category === category
+  );
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  
-  const [responseBody, setResponseBody] = useState({});
+
+  interface archObject {
+    id: string;
+  }
+  interface archObjects extends Array<archObject> {}
+
+  let initial: archObjects = [];
+  const [responseBody, setResponseBody] = useState(initial);
+  console.log(responseBody);
   const inputChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const id = event.target.id;
-    setResponseBody({ ...responseBody, [id]:id });
+    const { value, id } = event.target;
+    const checked = event.target.checked;
+    console.log(checked, id);
+    checked
+      ? setResponseBody([...responseBody, { id }])
+      : setResponseBody([...responseBody.filter(i => i.id !=id)]);
   };
   const onSubmitFormHandler = (e: React.BaseSyntheticEvent<any>) => {
     e.preventDefault();
     dispatch(unarchiveNote(responseBody));
     navigate("/");
   };
-
 
   return (
     <div className={styles["unarchived-form"]}>
@@ -35,7 +45,9 @@ export const UnArchiveForm: React.FC = (): JSX.Element => {
         <div className={styles["archives-container"]}>
           {archivedNotesByCategory.map((archiveElement) => (
             <div className={styles["archives-container-element"]}>
-              <label htmlFor={archiveElement.createdAt}>{archiveElement.name}</label>
+              <label htmlFor={archiveElement.createdAt}>
+                {archiveElement.name}
+              </label>
               <input
                 id={archiveElement.createdAt}
                 value={archiveElement.name}
@@ -48,7 +60,12 @@ export const UnArchiveForm: React.FC = (): JSX.Element => {
         <button
           type="submit"
           id="submit"
-          className={styles["form-button-disabled"]}
+          disabled={responseBody.length?false:true}
+          className={
+            Object.keys(responseBody).length
+              ? styles["form-button"]
+              : styles["form-button-disabled"]
+          }
         >
           Unarchived
         </button>

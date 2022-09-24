@@ -1,14 +1,19 @@
 .unarchived-form {
-  position: absolute;
+  position:absolute;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  margin:0 auto;
+  width: 100vw;
   height: 100%;
   opacity: 0.98;
   z-index: 100;
   background-color: white;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%);
 }
+
 .form {
   display: flex;
   padding: 5%;

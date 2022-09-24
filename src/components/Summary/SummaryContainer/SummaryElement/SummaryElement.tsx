@@ -10,12 +10,13 @@ export const SummaryElement = (props:Summary): JSX.Element => {
         <div>{category}</div>
         <div>{active}</div>
         <div>{archivedCount}</div>
-        <Link
-          to={"/unarchive"}
-          state={{ category: category }}
-          className={button ? styles["unarchived"] : styles["disabled-button"]}
-        >
-          <button>Unarchived</button>
+        <Link to={"/unarchive"} state={{ category: category }}>
+          <button
+            className={!archivedCount?styles["disabled-button"]:["unarchived"]}
+            disabled={archivedCount?false:true}
+          >
+            Unarchived
+          </button>
         </Link>
       </div>
     );
