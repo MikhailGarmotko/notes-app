@@ -30,12 +30,12 @@ itemsRouter.get("/", async (req: Request, res: Response) => {
 // GET items/stats
 
 itemsRouter.get("/stats", async (req: Request, res: Response) => {
-      try {
-      const stats:Summary = await ItemService.statistics();
-      return res.status(200).send(stats);
-    } catch (e: any) {
-      res.status(500).send(e.message);
-    }
+  try {
+    const stats: Summary = await ItemService.statistics();
+    return res.status(200).send(stats);
+  } catch (e: any) {
+    res.status(500).send(e.message);
+  }
 });
 
 // GET items/:id
@@ -48,37 +48,37 @@ itemsRouter.get("/:id", async (req: Request, res: Response) => {
       return res.status(200).send(item);
     }
     res.status(404).send("Items not found");
-  } catch (e:any) {
+  } catch (e: any) {
     res.status(500).send(e.message);
   }
 });
-
 
 // POST items
 
-itemsRouter.post("/", validate(linkSchema), async (req: Request, res: Response) => {
-  try {
-    const item: Note = req.body;
-    const newItem = await ItemService.create(item);
+itemsRouter.post(
+  "/",
+  validate(linkSchema),
+  async (req: Request, res: Response) => {
+    try {
+      const item: Note = req.body;
+      const newItem = await ItemService.create(item);
 
-    return res.status(200).send(newItem);
-  } catch (e:any) {
-    res.status(500).send(e.message);
+      return res.status(200).send(newItem);
+    } catch (e: any) {
+      res.status(500).send(e.message);
+    }
   }
-});
+);
 
 // PUT items/:id
 
 itemsRouter.patch("/:id", async (req: Request, res: Response) => {
   const id: number = parseInt(req.params.id, 10);
   try {
-    const itemUpdate:Item = req.body;
-    const existingItem: Item = await ItemService.find(id);
-    if (existingItem) {
-        const updatedItem = await ItemService.update(id, itemUpdate);
-      return res.status(200).json(updatedItem);
-    }
-  } catch (e:any) {
+    const itemUpdate: Item = req.body;
+    const updatedItem = await ItemService.update(id, itemUpdate);
+    return res.status(200).send(updatedItem);
+  } catch (e: any) {
     res.status(500).send(e.message);
   }
 });
@@ -90,7 +90,7 @@ itemsRouter.delete("/:id", async (req: Request, res: Response) => {
     const item: Item = await ItemService.find(id);
     await ItemService.remove(id);
     return res.status(200).json(item);
-  } catch (e:any) {
+  } catch (e: any) {
     res.status(500).send(e.message);
   }
 });

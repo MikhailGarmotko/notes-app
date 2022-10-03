@@ -96,40 +96,38 @@ export const create = async (newItem: any): Promise<any> => {
 export const update = async (
   id: number,
   itemUpdate: Note
-): Promise<Item | null> => {
-  const item = await find(id);
-  if (!item) {
-    return null;
-  }
-  // notes[id] = { id, ...itemUpdate };
-  return null;
+): Promise<any> => {
+  await Notes.update(itemUpdate, { where: { id: id } })
+  const updatedItem = await Notes.findByPk(id);
+  return updatedItem;
 };
 
 export const remove = async (id: number): Promise<any> => {
-  const user =await Notes.destroy({ where: { id: id } });
+  const user = await Notes.destroy({ where: { id: id } });
   return user;
 };
 export const statistics = async (): Promise<any> => {
-  // const notesMap = new Set(Object.values(notes).map((i: Note) => i.category));
-  // let summaryData: Summary = [];
-  // notesMap.forEach((i) => {
-  //   let activeCount = 0;
-  //   let archivedCount = 0;
-  //   Object.values(notes).map(
-  //     (item: Note) =>
-  //       item.category === i
-  //         ? item.status === "active"
-  //           ? activeCount++
-  //           : archivedCount++
-  //         : null,
-  //     0
-  //   );
-  //   summaryData.push({
-  //     category: i,
-  //     active: activeCount,
-  //     archived: archivedCount,
-  //   });
-  // });
+  const notes = await Notes.findAll();
+  const notesMap = new Set(notes.map((i: any) => i.category));
+  let summaryData: Summary = [];
+  notesMap.forEach((i) => {
+    let activeCount = 0;
+    let archivedCount = 0;
+    notes.map(
+      (item: any) =>
+        item.category === i
+          ? item.status === "active"
+            ? activeCount++
+            : archivedCount++
+          : null,
+      0
+    );
+    summaryData.push({
+      category: i,
+      active: activeCount,
+      archived: archivedCount,
+    });
+  });
 
-  return null;
+  return summaryData;
 };
