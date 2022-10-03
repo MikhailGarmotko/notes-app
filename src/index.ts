@@ -19,6 +19,7 @@ if (!process.env.PORT) {
 }
 
 const PORT: number = parseInt(process.env.PORT as string, 10);
+const HOST = "0.0.0.0"
 
 const app = express();
 
@@ -35,6 +36,6 @@ app.use("/notes", itemsRouter);
  * Server Activation
  */
 
-app.listen(PORT, () => {
-  console.log(`Listening on port ${PORT}`);
+app.listen(PORT, HOST, () => {
+  console.log(`App is listening on port ${PORT} , ${HOST}`);
 });

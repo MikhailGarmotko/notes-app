@@ -69,7 +69,7 @@ itemsRouter.post("/", validate(linkSchema), async (req: Request, res: Response) 
 
 // PUT items/:id
 
-itemsRouter.patch("/:id", validate(linkSchema), async (req: Request, res: Response) => {
+itemsRouter.patch("/:id", async (req: Request, res: Response) => {
   const id: number = parseInt(req.params.id, 10);
   try {
     const itemUpdate:Item = req.body;
