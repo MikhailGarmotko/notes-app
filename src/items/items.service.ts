@@ -6,7 +6,7 @@
 
 import { Note, Item, Summary } from "./item.interface";
 import { Items } from "./items.interface";
-import note from "../models/notes"; 
+import Notes from "../models/notes";
 /**
  * In-Memory Store
  */
@@ -80,20 +80,17 @@ import note from "../models/notes";
 /**
  * Service Methods
  */
-let notes: Items = {};
 
-export const findAll = async (): Promise<Item[]> => Object.values(notes).filter(i => i.status ==="active");
-export const find = async (id: number): Promise<Item> => notes[id];
+export const findAll = async (): Promise<any> => await Notes.findAll();
+export const find = async (id: number): Promise<any> =>
+  await Notes.findByPk(id);
 
-export const create = async (newItem: Note): Promise<Item> => {
+export const create = async (newItem: any): Promise<any> => {
   const id = new Date().valueOf();
 
-  notes[id] = {
-    id,
-    ...newItem,
-  };
+  const user = await Notes.create(newItem);
 
-  return notes[id];
+  return user;
 };
 
 export const update = async (
@@ -104,38 +101,35 @@ export const update = async (
   if (!item) {
     return null;
   }
-  notes[id] = { id, ...itemUpdate };
-  return notes[id];
+  // notes[id] = { id, ...itemUpdate };
+  return null;
 };
 
-export const remove = async (id: number): Promise<null | void> => {
-  const item = await find(id);
-  if (!item) {
-    return null;
-  }
-  delete notes[id];
+export const remove = async (id: number): Promise<any> => {
+  const user =await Notes.destroy({ where: { id: id } });
+  return user;
 };
-export const statistics = async (): Promise<Summary> => {
-  const notesMap = new Set(Object.values(notes).map((i: Note) => i.category));
-  let summaryData: Summary = [];
-  notesMap.forEach((i) => {
-    let activeCount = 0;
-    let archivedCount = 0;
-    Object.values(notes).map(
-      (item: Note) =>
-        item.category === i
-          ? item.status === "active"
-            ? activeCount++
-            : archivedCount++
-          : null,
-      0
-    );
-    summaryData.push({
-      category: i,
-      active: activeCount,
-      archived: archivedCount,
-    });
-  });
+export const statistics = async (): Promise<any> => {
+  // const notesMap = new Set(Object.values(notes).map((i: Note) => i.category));
+  // let summaryData: Summary = [];
+  // notesMap.forEach((i) => {
+  //   let activeCount = 0;
+  //   let archivedCount = 0;
+  //   Object.values(notes).map(
+  //     (item: Note) =>
+  //       item.category === i
+  //         ? item.status === "active"
+  //           ? activeCount++
+  //           : archivedCount++
+  //         : null,
+  //     0
+  //   );
+  //   summaryData.push({
+  //     category: i,
+  //     active: activeCount,
+  //     archived: archivedCount,
+  //   });
+  // });
 
-    return summaryData;
+  return null;
 };

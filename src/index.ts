@@ -7,6 +7,7 @@ import express from "express";
 import cors from "cors";
 import helmet from "helmet";
 import { itemsRouter } from "./items/items.router";
+import sequelize from "./util/database";
 
 dotenv.config();
 
@@ -19,7 +20,7 @@ if (!process.env.PORT) {
 }
 
 const PORT: number = parseInt(process.env.PORT as string, 10);
-const HOST = "0.0.0.0"
+const HOST = "0.0.0.0";
 
 const app = express();
 
@@ -35,7 +36,15 @@ app.use("/notes", itemsRouter);
 /**
  * Server Activation
  */
+const start = async () => {
+  try {
+    await sequelize.sync({ force: false });
+    app.listen(PORT, HOST, () => {
+      console.log(`App is listening on port ${PORT} , ${HOST}`);
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
 
-app.listen(PORT, HOST, () => {
-  console.log(`App is listening on port ${PORT} , ${HOST}`);
-});
+start();

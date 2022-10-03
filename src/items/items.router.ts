@@ -89,7 +89,7 @@ itemsRouter.delete("/:id", async (req: Request, res: Response) => {
   try {
     const item: Item = await ItemService.find(id);
     await ItemService.remove(id);
-    res.sendStatus(404);
+    return res.status(200).json(item);
   } catch (e:any) {
     res.status(500).send(e.message);
   }
