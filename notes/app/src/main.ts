@@ -4,10 +4,9 @@ import * as dotenv from 'dotenv';
 
 dotenv.config();
 
-const PORT = process.env.PORT;
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  await app.listen(PORT);
+  await app.listen(process.env.PORT || 3000);
 }
 bootstrap();
